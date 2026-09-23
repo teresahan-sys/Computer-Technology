@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            background-color: cornsilk;
+            font-family: fantasy;
+            font-size: 30px;
+            color: rgb(246, 16, 108);
+            display: flex;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            align-items: center;
+            margin: 0;
+            padding: 40px;
+            border-radius: 12px;
+            flex-direction: column
+
+        }
+        
+        .header p {
+            margin: 0.5px
+        }
+        .header:hover {
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.12);
+            transform: translateY(-2px) scale(1.005);
+        }
+
+        .sticky-nav {
+            display: flex;
+            justify-content: right;
+            padding: 12px;
+            gap: 24px;
+            background-color: pink;
+            border-radius: 4px;
+        }
+
+        .sticky-nav a {
+            text-decoration: none;
+            color: black;
+            transition: background-color 0.4s ease;
+        }
+
+        .sticky-nav a:hover {
+            background-color: yellow;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px;
+            
+
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Catalogue</a>
+    </div>
+    <div class="header">
+        <p>Welcome to the store.</p>
+        <br>Purchase products here.
+    </div>
+
+    <footer>
+        <p>&copy; 2026. All rights reserved.</p>
+    </footer>
+</body>
+</html>

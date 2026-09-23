@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Market Day Preorders</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .cart-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cart-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .total-display {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: right;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🎪 School Market Day</h1>
+        <p>Preorder your treats now and skip the lines on the day!</p>
+    </header>
+
+    <div class="store-grid">
+        <div class="product-card">
+            <div class="product-title">🎒 Homemade Cupcakes</div>
+            <div class="product-price">$3.00</div>
+            <button class="btn" onclick="addToCart('Cupcake', 3.00)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-title">🥤 Ice Cold Spider Drink</div>
+            <div class="product-price">$4.50</div>
+            <button class="btn" onclick="addToCart('Spider Drink', 4.50)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-title">🍿 Movie Style Popcorn</div>
+            <div class="product-price">$2.00</div>
+            <button class="btn" onclick="addToCart('Popcorn', 2.00)">Add to Cart</button>
+        </div>
+    </div>
+
+    <form id="orderForm" action="https://google.com" method="POST" target="_hidden_iframe">
+        <div class="cart-section">
+            <div class="cart-title">🛒 Your Preorder Checkout</div>
+            
+            <div class="input-group">
+                <label for="studentName">Student Full Name</label>
+                <input type="text" id="studentName" name="entry.111111111" placeholder="e.g. John Doe" required>
+            </div>
+
+            <div class="input-group">
+                <label for="studentClass">Roll Class / Year Group</label>
+                <input type="text" id="studentClass" name="entry.222222222" placeholder="e.g. 9B" required>
+            </div>
+
+            <div class="input-group">
+                <label for="cartItems">Selected Items</label>
+                <input type="text" id="cartItems" name="entry.333333333" readonly style="background:#e2e8f0;">
+            </div>
+
+            <div class="total-display">
+                Total Price: $<span id="totalPriceDisplay">0.00</span>
+            </div>
+
+            <button type="submit" class="btn">Place Preorder</button>
+        </div>
+    </form>
+</div>
+
+<iframe name="_hidden_iframe" id="_hidden_iframe" style="display:none;" onload="if(submitted) {alert('Preorder successfully sent to Google Sheets!'); resetCart();}"></iframe>
+
+<script>
+    let submitted = false;
+    let cart = {};
+    let total = 0;
+
+    document.getElementById('orderForm').onsubmit = function() {
+        if(total === 0) {
+            alert("Your cart is empty! Add an item first.");
+            return false;
+        }
+        submitted = true;
+        return true;
+    };
+
+    function addToCart(itemName, price) {
+        if (cart[itemName]) {
+            cart[itemName].qty += 1;
+        } else {
+            cart[itemName] = { price: price, qty: 1 };
+        }
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        total = 0;
+        let summaryText = [];
+        
+        for (const [name, item] of Object.entries(cart)) {
+            let itemTotal = item.price * item.qty;
+            total += itemTotal;
+            summaryText.push(`${name} (x${item.qty})`);
+        }
+
+        document.getElementById('cartItems').value = summaryText.join(', ');
+        document.getElementById('totalPriceDisplay').innerText = total.toFixed(2);
+    }
+
+    function resetCart() {
+        cart = {};
+        total = 0;
+        document.getElementById('orderForm').reset();
+        document.getElementById('totalPriceDisplay').innerText = "0.00";
+        submitted = false;
+    }
+</script>
+
+</body>
+</html>

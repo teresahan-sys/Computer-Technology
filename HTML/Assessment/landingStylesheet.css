@@ -1,0 +1,1493 @@
+/* Global styles or variables */
+:root {
+    --brand-blue: #0F4C81;
+    --hover-blue: #979a9b;
+    --darker-hover:#0b3962;
+    --expandable-grey: #ECECEC;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('Inter-VariableFont_opsz,wght.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color:rgba(246, 245, 242, 0.3)
+}
+
+/* Header and navigation bar styling across all pages */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#ffffff;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.174);
+}
+
+.logo {
+    width: 155px;
+    display: inline-flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    transition: transform 0.4s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+.services {
+    display: flex;
+    gap: 40px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 15px;
+}
+
+.services a:not(.cta-button) {
+    text-decoration: none;
+    color:#000000;
+    transition: color 0.3s ease;
+}
+
+.services a:not(.cta-button):hover {
+    cursor: pointer;
+    color: var(--hover-blue);
+}
+
+/* General button and call-to-action button styling */
+.cta-button,
+#hero-button,
+.diagnostic-button {
+    color: #ffffff;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--brand-blue);
+    border-radius: 5px;
+    padding: 10px 20px;
+    gap: 15px;
+    text-decoration: none;
+    font-family: 'Inter';
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background-color 0.4s ease, border 0.4s ease;
+}
+
+.cta-button:hover {
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.174);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.cta-button:hover .arrowhead {
+    transform: translateX(4px);
+}
+
+.arrowhead {
+    display: flex;  
+    align-items: center;
+    margin: 5px;
+    transition: transform 0.4s ease;
+}
+
+#hero-button {
+    font-size: 15px;
+    margin-top: 20px;
+    border: 1px solid rgb(255 255 255 / 0.4);
+}
+
+#hero-button:hover {
+    background-color: var(--darker-hover);
+    cursor: pointer;
+    border: 1px solid rgb(255 255 255 / 0.6);
+}
+
+#hero-button:hover .arrowhead {
+    transform: translateX(4px);
+}
+
+/* Positioning of text and image in hero banner across all pages */
+.hero-banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#ffffff;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: left;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 10;
+    padding: 20px;
+    margin: 20px;
+    text-indent: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1440/596;
+    object-fit: cover;
+}
+
+.hero-text {
+    align-items: left;
+    font-size: 6.5vw;
+    max-width: 736px;
+    width: 100%;
+    text-shadow: 0px 4px 20px #000000;
+}
+
+#description {
+    display: flex;
+    text-align: left;
+    margin-top: 20px;
+    font-size: 1rem;
+    width: 100%;
+    line-height: 30px;
+}
+
+.blue-container {
+    width: 100%;
+    background-color: var(--brand-blue);
+    height: 70px;
+    text-align: center;
+    padding: 25px;
+    color: #ffffff;
+    font-size: 15px;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.409);
+}
+
+.section-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+/* Services section */
+#service-overview {
+    font-weight: 500;
+    margin-top: 40px;
+    font-size: 40px;
+    margin-left: 40px;
+}
+
+.service-containers {
+    flex: 0 0 50%;
+    width: 50%;
+    margin-left: 40px;
+    margin-top: 40px;
+    display: flex;
+    font-weight: 500;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media screen and (max-width: 1090px) {
+    .service-containers {
+        width: calc(100% - 80px);
+    }
+}
+
+.bottom-arrow {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    line-height: 0;
+    transition: bottom 0.3s ease, left 0.3s ease;
+}
+
+.top-arrow {
+    position: absolute;
+    top: 17px;
+    right: 10px;
+    line-height: 0;
+    transition: top 0.3s ease, right 0.3s ease;
+}
+
+.mechanical-repairs {
+    background-color: #ffffff;
+    width: 100%;
+    height: 275px;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    text-align: left;   
+    display: flex;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.174);
+    border-radius: 30px;
+    overflow: hidden;   
+    padding: 30px;
+    flex-direction: row;
+    position: relative;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.mechanical-repairs:hover {
+    transform: translateY(-2px);
+    border-color: #0f4c8150;
+}
+
+.mechanical-image {
+    width: 215px;
+    height: 215px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.mechanical-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    justify-content: center;
+}
+
+.mechanical-title {
+    font-size: 22px;
+    line-height: 45px;
+}
+
+.mechanical-description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+/* Why choose us and service diagnostic column */
+.right-column {
+    font-weight: 400;
+    margin-right: 40px;
+    margin-top: 45px;
+    margin-left: 10px;
+}
+
+.why-us-title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 80px;
+}
+
+.why-us-body {
+    line-height: 40px;
+}
+
+.tick-list {
+    margin-top: 26px;
+    text-align: left;
+    margin-left: 23%;
+}
+
+.ticks {
+    color: #00BFA5;
+}
+
+/* Styling for the checkboxes used in step one of the booking form */
+.boxes input[type="checkbox"] {
+    appearance: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 18%;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input.one-box {
+    transform: translateY(6px);
+    margin-top: 20px;
+}
+
+.boxes input[type="checkbox"]:hover {
+    border-color: #787b7ccc;
+}
+
+.boxes input[type="checkbox"]:checked{
+    background-color: var(--brand-blue);
+    border-color: #c5c2c2;
+}
+
+.boxes span {
+    cursor: pointer;
+}
+
+.free-diagnostic {
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #ffffff;
+    padding: 79px;
+    padding-left: 85px;
+    height: auto;
+    margin-top: 200px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.174);
+}
+
+.free-diagnostic-title {
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+#free-diagnostic-button {
+    margin-top: 130px;
+    margin-left: 80px;
+}
+
+.diagnostic-list ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+.diagnostic-list li {
+    list-style-position: inside;
+}
+
+#question {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 500;    
+}
+
+.diagnostic-button {
+    appearance: none !important;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    margin-top: 70px;
+    background-color: var(--brand-blue);
+    margin-left: 53%;
+    font-weight: 500;
+    font-size:  15px;
+}
+
+.diagnostic-button:hover {
+    transform: translateY(-2px);
+}
+
+.diagnostic-button:hover .arrowhead {
+    transform: translateX(4px);
+}
+
+/* Universal footer styling */
+footer {
+    background-color: var(--brand-blue);
+    color: #ffffff;
+    margin-top: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-services {
+    font-weight: 700;
+    line-height: 30px;
+    font-size: 19px;
+    margin-left: 40px;
+}
+
+.footer-service-text {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.facebook {
+    width: 35px;
+    height: 35px;
+    margin-right: -9px;
+}
+
+.x {
+    width: 23px;
+    height: 23px;
+}
+
+.youtube {
+    width: 30px;
+    height: 30px;
+}
+
+.social-logos {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.footer-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 40px;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.footer-service-text span {
+    cursor: pointer;
+}
+
+.social-logos img {
+    cursor: pointer;
+}
+
+.social-logos a{
+    transition: opacity 0.3s ease;
+}
+
+.social-logos a:hover {
+    opacity: 0.8;
+}
+
+.footer-service-text a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.copyright {
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: 48px;
+}
+
+/* About Us page */
+.about-slogan {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 80px;
+    margin-left: 40px;
+}
+
+.philosophy {
+    margin-left: 40px;
+    margin-right: 40px;
+    line-height: 30px;
+    font-size: 16px;
+}
+
+.about-team {
+    font-weight: 500;
+    margin-left: 40px;
+    margin-top: 60px;
+    font-size: 40px;
+}
+
+.line-break {
+    display: block;
+    margin-top: 1.5rem;
+}
+
+/* Team member cards */
+.name {
+    font-size: 50px;
+}
+
+.person-container {
+    font-weight: 500;
+    font-size: 35px;
+    display: flex;
+    border: 1px solid rgb(255 255 255 / 0.4);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.174);
+    margin-top: 40px;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 28vw;
+}
+
+.person-container img {
+    border-radius: 25px;
+    margin: 20px;
+}
+
+.team-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 40px;
+    gap: 40px;
+}
+
+.bullets {
+    font-weight: 500;
+    margin-bottom: -18px;
+    color: #555555;
+    font-size: 23px;
+}
+
+.profile {
+    font-size: 14px;
+    line-height: 35px;
+    margin-bottom: 20px;
+}
+
+.person-container p,
+.person-container span {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Booking form */
+.booking-container {
+    background-color: #ffffff;
+    top: 50%;
+    z-index: 10000;
+    position: absolute;
+    width: calc(100% - 80px);
+    left: 40px;
+    right: 40px;
+    padding: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.066);
+    margin-top: -120px;
+}
+
+#contact-page #booking-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.booking-title {
+    font-weight: 600;
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+.step {
+    color: #c5c2c2;
+    flex: 1;
+    border-bottom: 5px solid #c5c2c2;
+    padding-bottom: 15px;
+    white-space: nowrap;
+    transition: color 0.4s ease, border-bottom-color 0.4s ease;
+}
+
+.step.active {
+    color: var(--brand-blue);
+    border-bottom-color: var(--brand-blue);
+}
+
+#contact-page .boxes {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.still-unsure {
+    margin-top: 50px;
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+}
+
+.step-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 40px;
+}
+
+#contact-page .checkbox-row input[type="checkbox"]:checked {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+#contact-page .boxes input[type="checkbox"] {
+    margin-left: 0 !important;
+}
+
+#contact-page .diagnostic-button {
+    padding: 10px 30px;
+    font-family: 'Inter';
+}
+
+.form-step {
+    display: none;
+    transform: translateX(30px);
+    width: 100%;
+}
+
+.form-step.active {
+    display: block;
+    animation: stepIn 0.4s ease forwards;
+}
+
+/* AI-ASSISTED START | ID: AI-2026-002 */
+@keyframes stepIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* AI-ASSISTED END | ID: AI-2026-002 */
+
+[name="registration"] {
+    text-transform: uppercase;
+}
+
+[name="registration"]::placeholder {
+    text-transform: none;
+}
+
+#contact-page input:not([type="checkbox"]),
+#contact-page textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    display: block;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    width: 600px;
+    border: 1px solid #c5c2c2;
+    border-radius: 10px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+#contact-page input:not([type="checkbox"]):hover,
+#contact-page textarea:hover {
+    border-color: #979a9b;
+}
+
+#contact-page input:not([type="checkbox"]):focus-visible,
+#contact-page textarea:focus-visible {
+    border-color: var(--brand-blue);
+    outline: 1px solid var(--brand-blue);
+}
+
+#contact-page input::placeholder,
+#contact-page textarea::placeholder {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color:#c5c2c2;
+}
+
+.form-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin-top: 10px;
+}
+
+.form-field input {
+    margin-bottom: 0 !important;
+}
+
+.form-field label {
+    width: 180px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    width: 100%;
+    align-items: center;
+    clear: both;
+}
+
+.form-buttons .diagnostic-button {
+    float: none;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+#next-button {
+    float: right;
+    margin-left: auto;
+}
+
+.form-buttons #back-button,
+.form-buttons #back-button-2 {
+    margin-right: auto;
+}
+
+.form-buttons #next-button-2,
+.form-buttons button[type="submit"] {
+    margin-left: auto;
+}
+
+#contact-page .form-buttons .diagnostic-button {
+    margin-top: 0;
+}
+
+.date-time-row {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.date-time-field {
+    flex: 1;
+    min-width: 0;
+}
+
+.notes-field textarea {
+    width: 100% !important;
+}
+
+.date-time-field input {
+    width: 100% !important;
+}
+
+.booking-question {
+    font-size: 20px;
+}
+
+.date-time-field label,
+.notes-field label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Testimonials page */
+.testimonial-main {
+    padding: 60px 40px 30px;
+}
+
+.testimonial-heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.testimonial-heading h1 {
+    margin-top: 12px;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.testimonial-introduction {
+    max-width: 600px;
+    margin: 18px auto 0;
+    color: #555555;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+#contact-page footer {
+    margin-top: 300px;
+}
+
+.testimonial-grid {
+    display: grid;
+    /* Create grid layout with three columns of equal width */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.testimonial-card {
+    min-height: 340px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    border-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.174);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(15, 76, 129, 0.4);
+}
+
+.testimonial-customer {
+    display: flex;
+    align-items: center;
+}
+
+.customer-initial {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: var(--brand-blue);
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.customer-details {
+    margin-left: 15px;
+}
+
+.customer-details h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.customer-details p {
+    margin-top: 5px;
+    color: #777777;
+    font-size: 13px;
+}
+
+.testimonial-stars {
+    margin-top: 25px;
+    color: #f4b942;
+    font-size: 19px;
+    letter-spacing: 3px;
+}
+
+.testimonial-review {
+    margin-top: 20px;
+    color: #363636;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.testimonial-date {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #777777;
+    border-top: 1px solid #e5e5e5;
+    font-size: 12px;
+}
+
+/* Responsive design code */
+@media screen and (max-width: 950px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .testimonial-main {
+        padding: 45px 20px 20px;
+    }
+
+    .testimonial-heading h1 {
+        font-size: 32px;
+    }
+
+    .testimonial-card {
+        padding: 24px;
+    }
+}
+
+#testimonials-body .hero-banner::after {
+    /* Creates blank canvas to produce new element */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.testimonial-callout {
+    margin-top: 60px;
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    color: #000000;
+    background-color: #ffffff;
+    border: 2px solid #a7a0a0a2;
+    border-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.068);
+}
+
+.testimonial-callout h2 {
+    margin: 0;
+    color: #000000;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.callout-description {
+    margin-top: 12px;
+    color: #555555;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.testimonial-button {
+    min-width: 180px;
+    padding: 12px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-shrink: 0;
+    color: #ffffff;
+    background-color: var(--brand-blue);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.testimonial-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.174);
+}
+
+.testimonial-button .arrowhead {
+    margin: 0;
+}
+
+.testimonial-button:hover .arrowhead {
+    transform: translateX(4px);
+}
+
+/* Further responsive designs for a range of screen sizes */
+@media screen and (max-width: 1250px) {
+    #contact-page footer {
+        margin-top: 370px;
+    }
+    .section-wrap {
+        flex-direction: column;
+        margin: 0 40px;
+    }
+
+    .service-containers {
+        width: 100%;
+        flex-basis: auto;
+        margin: 40px 0 0;
+    }
+
+    .right-column {
+        width: 100%;
+        margin: 20px 0 0;
+    }
+
+    .why-us-body {
+        line-height: 32px;
+    }
+
+    .tick-list {
+        margin-left: 0;
+    }
+
+    .free-diagnostic {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 40px;
+        padding: 45px;
+    }
+
+    .checkbox-row {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .boxes input[type="checkbox"] {
+        margin-left: 0;
+    }
+
+    input.one-box {
+        margin-top: 0;
+        transform: none;
+    }
+
+    .diagnostic-button {
+        margin-top: 40px;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .services {
+        gap: 20px;
+    }
+
+    #contact-page footer {
+        margin-top: 0;
+    }
+
+    .hero-image {
+        height: 360px;
+        aspect-ratio: auto;
+        object-fit: cover;
+    }
+
+    .hero-content {
+        width: 90%;
+        margin: 0;
+    }
+
+    .hero-text {
+        font-size: 52px;
+    }
+
+    #description {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    #description br {
+        display: none;
+    }
+
+    .blue-container {
+        height: auto;
+        padding: 20px;
+        line-height: 24px;
+    }
+
+    #service-overview {
+        margin: 35px 25px 0;
+        font-size: 32px;
+    }
+
+    .section-wrap {
+        margin: 0 25px;
+    }
+
+    .mechanical-repairs {
+        height: auto;
+        min-height: 240px;
+    }
+
+    .mechanical-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .mechanical-text {
+        margin-right: 35px;
+        margin-left: 25px;
+    }
+
+    .about-slogan {
+        margin: 30px 25px 0;
+        font-size: 25px;
+        line-height: 40px;
+    }
+
+    .philosophy {
+        margin: 20px 25px 0;
+    }
+
+    .about-team {
+        margin: 50px 25px 0;
+        font-size: 32px;
+    }
+
+    .team-flexbox {
+        flex-direction: column;
+        margin-right: 25px;
+    }
+
+    .person-container {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 25px;
+    }
+
+    .person-container img {
+        width: calc(100% - 40px);
+        max-height: 500px;
+        object-fit: cover;
+    }
+
+    .booking-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: auto;
+        margin: 40px 25px;
+        padding: 40px;
+    }
+
+    #contact-page input:not([type="checkbox"]),
+    #contact-page textarea {
+        width: 100%;
+    }
+
+    .form-field {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .form-field label {
+        width: 100%;
+    }
+
+    .date-time-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .testimonial-main {
+        padding: 45px 25px 30px;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .testimonial-callout {
+        padding: 28px;
+    }
+
+    .footer-flexbox {
+        margin: 0 30px;
+        flex-wrap: wrap;
+        gap: 35px;
+    }
+
+    .footer-services {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    #contact-page footer {
+        margin-top: 0;
+    }
+
+    .logo {
+        width: 125px;
+    }
+
+    .services {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding-top: 5px;
+        padding-right: 0;
+        padding-bottom: 5px;
+        font-size: 11px;
+        flex-wrap: wrap;
+    }
+
+    .services a:not(.cta-button) {
+        white-space: nowrap;
+    }
+
+    .cta-button {
+        width: auto;
+        justify-content: center;
+    }
+
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .hero-text {
+        font-size: 38px;
+        line-height: 45px;
+    }
+
+    #description {
+        margin-top: 15px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    #hero-button {
+        padding: 9px 14px;
+        font-size: 13px;
+    }
+
+    .blue-container {
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+
+    #service-overview {
+        margin: 30px 18px 0;
+        font-size: 28px;
+    }
+
+    .section-wrap {
+        margin: 0 18px;
+    }
+
+    .mechanical-repairs {
+        min-height: 0;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .mechanical-image {
+        width: 100%;
+        height: 190px;
+    }
+
+    .mechanical-text {
+        margin: 18px 0 0;
+    }
+
+    .mechanical-title {
+        padding-right: 40px;
+        font-size: 20px;
+    }
+
+    .mechanical-description {
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .expanding-icon {
+        top: 210px;
+        right: 20px;
+        margin-top: 20px;
+    }
+
+    .why-us-title {
+        margin-bottom: 15px;
+        font-size: 23px;
+        line-height: 35px;
+    }
+
+    .why-us-body {
+        font-size: 14px;
+        line-height: 27px;
+    }
+
+    #free-diagnostic-button {
+        margin-top: 40px;
+        margin-left: 0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .free-diagnostic {
+        padding: 60px 80px;
+    }
+
+    .free-diagnostic-title {
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .diagnostic-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-slogan {
+        margin: 30px 18px 0;
+        font-size: 22px;
+    }
+
+    .philosophy {
+        margin: 20px 18px 0;
+        font-size: 14px;
+        line-height: 27px;
+    }
+
+    .about-team {
+        margin-left: 18px;
+        font-size: 28px;
+    }
+
+    .team-flexbox {
+        margin-right: 18px;
+    }
+
+    .person-container {
+        padding: 20px;
+    }
+
+    .person-container img {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+
+    .person-container p,
+    .person-container span {
+        padding: 0;
+    }
+
+    .name {
+        font-size: 32px;
+    }
+
+    .bullets {
+        font-size: 18px;
+    }
+
+    .profile {
+        line-height: 27px;
+    }
+
+    .booking-container {
+        margin: 30px 15px;
+        padding: 25px 20px;
+    }
+
+    .booking-title {
+        margin-top: 25px;
+        font-size: 25px;
+    }
+
+    .step-container {
+        gap: 10px;
+        overflow-x: auto;
+        font-size: 11px;
+    }
+
+    .step {
+        min-width: 120px;
+    }
+
+    .form-buttons {
+        gap: 15px;
+    }
+
+    #contact-page .form-buttons .diagnostic-button {
+        width: auto;
+        padding: 10px 18px;
+    }
+
+    .testimonial-main {
+        padding: 40px 18px 20px;
+    }
+
+    .testimonial-heading h1 {
+        font-size: 30px;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .testimonial-review {
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .testimonial-date {
+        margin-top: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .testimonial-callout {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .testimonial-callout h2 {
+        font-size: 24px;
+    }
+
+    .testimonial-button {
+        width: 100%;
+    }
+
+    footer {
+        padding: 30px 0;
+    }
+
+    .footer-flexbox {
+        margin: 0 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .footer-socials {
+        align-items: flex-start;
+    }
+
+    .copyright {
+        margin-top: 25px;
+    }
+}
+
+.booking-container {
+    animation-name: rise;
+    animation-duration: 1s;
+
+    /* How many times the animation repeats itself */
+    animation-iteration-count: 1;
+
+    /* Container retains position after rising animation */
+    animation-fill-mode: forwards;
+}
+
+/* Animation to let container rise up on the booking page when user first clicks on */
+@keyframes rise {
+    from {
+        /* Starting position 80px lower than usual */
+        transform: translateY(80px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}

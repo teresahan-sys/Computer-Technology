@@ -1,0 +1,16 @@
+a {
+    text-decoration: none;
+    color: #000000;
+    display: inline-block;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+a:hover {
+    background-color:darkgrey;
+    transform: translateY(-2px)
+}
+
+body {
+    background-color: beige;
+    font-family: sans-serif;
+}

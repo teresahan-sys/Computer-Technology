@@ -1,0 +1,29 @@
+body {
+            background-color: #BA1650;
+            font-family:sans-serif;
+            color:aliceblue;
+        }
+
+        #unique-name {
+            display: flex; 
+            align-items:center; 
+            justify-content:center;
+        }
+
+        #unique-name img {
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+        #unique-name:hover img {
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            color:#ffff00;
+        }
+
+        #back-button {
+            display: flex;
+            justify-content: center;
+        }

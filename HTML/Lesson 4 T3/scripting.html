@@ -1,0 +1,30 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            function changeMessage() {
+                const element = document.getElementById("message")
+                const style = window.getComputedStyle(element)
+                const currentColor = style.backgroundColor;
+                if (currentColor === 'rgb(173, 255, 47)') {
+                    element.style.backgroundColor = 'rgb(255, 0, 0)';
+                }   
+                else {
+                    element.style.backgroundColor = 'rgb(173, 255, 47)';
+                    element.style.color = 'rgb(0, 0, 0)';
+                } 
+                element.textContent =
+                    "The button was clicked!";
+                document.querySelector(".myWindow").style.display = "block";  
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="message" style="background-color:rgb(173, 255, 47); padding:10%;">Nothing has happened yet.</h1>
+        <button onclick="changeMessage()">Click me</button>
+        <div class="myWindow" style="display:none; border:2px solid black; padding:10%; margin-top: 3%;">This is the window content</div>
+    </body>
+    </html>

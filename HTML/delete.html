@@ -1,0 +1,702 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>?v=2">
+    <title>Studio Mochi | Market Day 2026 |</title>
+    <style>
+        :root {
+            --bg-color: #fbf7f4;          /* Soft Cream Milk-Tea */
+            --surface-color: #ffffff;     /* Clean White */
+            --text-main: #4a3e3d;         /* Rich Cocoa Brown */
+            --text-muted: #8a7a78;        /* Matte Taupe */
+            --pink-accent: #ffccd5;       /* Sakura Pink */
+            --pink-text: #d6687a;
+            --green-accent: #e8f5e9;      /* Matcha Green */
+            --green-text: #3b7a57;
+            --purple-accent: #f3e5f5;     /* Taro Purple */
+            --purple-text: #7b1fa2;
+            --yellow-accent: #fef3c7;     /* Custard Yellow */
+            --yellow-text: #b45309;
+            --border-ui: #f1eae6;
+            --card-radius: 20px;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .navbar {
+            background: var(--surface-color);
+            border-bottom: 1px solid var(--border-ui);
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0px -1px 6px rgba(0,0,0,0.12);
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .nav-brand {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--pink-text);
+            text-decoration: none;
+        }
+
+        .nav-brand:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .nav-meta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: var(--bg-color);
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .hero-banner {
+            max-width: 800px;
+            margin: 60px auto 30px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-banner h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin: 0 0 15px 0;
+            color: var(--text-main);
+            text-shadow: 
+                2px 2px 0px var(--pink-accent), 
+                3px 3px 0px var(--pink-accent), 
+                4px 4px 0px var(--pink-accent), 
+                5px 5px 0px rgba(74, 62, 61, 0.06);
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 0 25px 0;
+        }
+
+        /* Rearranged layout back to an easy-to-read flex rows system */
+        .page-navigation {
+            max-width: 760px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            background: var(--surface-color);
+            border: 1px solid var(--border-ui);
+            color: var(--text-muted);
+            padding: 14px 34px;
+            border-radius: 35px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(74, 62, 61, 0.04);
+            text-align: center;
+            display: inline-block;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            color: var(--pink-text);
+            border-color: var(--pink-accent);
+        }
+
+        .nav-link.active-link {
+            background: var(--pink-accent);
+            color: var(--pink-text) !important;
+            border-color: var(--pink-accent);
+            box-shadow: 0 6px 16px rgba(214, 104, 122, 0.15);
+        }
+
+        .showcase-container {
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--surface-color);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px -8px rgba(74, 62, 61, 0.05);
+            border: 1px solid var(--border-ui);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -12px rgba(74, 62, 61, 0.12);
+        }
+
+        .image-frame {
+            aspect-ratio: 1 / 0.70;
+            background: #fdfaf8;
+            overflow: hidden;
+            display: block;
+            position: relative !important;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-details {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            flex-grow: 1;
+        }
+
+        .meta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 20px;
+        }
+
+        .category-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .product-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 6px 0 0 0;
+            letter-spacing: -0.5px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .pink-theme .category-tag { background: var(--pink-accent); color: var(--pink-text); }
+        .pink-theme .product-price { background: var(--pink-accent); color: var(--pink-text); }
+        .pink-theme .product-title { color: var(--pink-text); }
+
+        .green-theme .category-tag { background: var(--green-accent); color: var(--green-text); }
+        .green-theme .product-price { background: var(--green-accent); color: var(--green-text); }
+        .green-theme .product-title { color: var(--green-text); }
+
+        .purple-theme .category-tag { background: var(--purple-accent); color: var(--purple-text); }
+        .purple-theme .product-price { background: var(--purple-accent); color: var(--purple-text); }
+        .purple-theme .product-title { color: var(--purple-text); }
+
+        .yellow-theme .category-tag { background: var(--yellow-accent); color: var(--yellow-text); }
+        .yellow-theme .product-price { background: var(--yellow-accent); color: var(--yellow-text); }
+        .yellow-theme .product-title { color: var(--yellow-text); }
+
+        .countdown {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: #ffccd5;
+            color: #d6687a;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(214, 104, 122, 0.2);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-ui);
+            border-radius: 999px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+        }
+
+        .theme-toggle:hover {
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+
+        body.dark {
+            --bg-color: #1a1622;
+            --surface-color: #241d30;
+            --text-main: #ffffff;
+            --text-muted: #c9c1d6;
+            --pink-accent: #e7a6c8;
+            --pink-text: #ffdfec;
+            --green-accent: #b8e6c9;
+            --green-text: #e8fff3;
+            --purple-accent: #c9b6ff;
+            --purple-text: #f0eaff;
+            --yellow-accent: #ffe3a3;
+            --yellow-text: #fff6dc;
+            --border-ui: rgba(255,255,255,0.12);
+        }
+
+        body.dark .product-description, body.dark .spec-field { color: #e9e3f5; }
+        body.dark .product-card { background: var(--surface-color); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); }
+        body.dark .nav-meta { color: #d7cfe6; }
+        body.dark .product-price { color: #ffffff; font-weight: 800; }
+        body.dark .category-tag { color: #1a1622; font-weight: 800; }
+        body.dark .countdown { background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.12); }
+        body.dark .nav-link { color: #e9e3f5; border-color: rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); }
+        body.dark .nav-link.active-link { background: var(--pink-accent); color: #1a1622 !important; }
+
+        #petalsCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.25s ease;
+            z-index: 9998;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .card-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .expanded-card {
+            position: fixed;
+            z-index: 9999;
+            transition: all 0.35s ease;
+            border-radius: 20px;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            background: var(--surface-color);
+        }
+
+        .expanded-card.open {
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%);
+            width: min(900px, 92vw) !important;
+            height: min(85vh, 700px) !important;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-weight: bold;
+            transition: background 0.4s ease, transform 0.4s ease, color 0.4s ease;
+        }
+
+        .close-btn:hover {
+            background: #f68787;
+            color: white;
+            transform: scale(1.05);  
+        }
+
+        .expanded-card .image-frame { height: 320px; width: 100%; overflow: hidden; flex-shrink: 0; }
+        .expanded-card .card-details { padding: 28px 32px; }
+        .expanded-card .product-title { font-size: 2.2rem; }
+        .expanded-card .product-description { font-size: 1.05rem; line-height: 1.7; }
+
+        .image-frame::after {
+            content: ''; position: absolute; top: 1rem; right: 1rem; width: 0.55rem; height: 0.55rem;
+            border-right: 0.15rem solid #ffffff; border-bottom: 0.15rem solid #ffffff;
+            transform: rotate(45deg); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none; z-index: 10; filter: drop-shadow(0 0.1rem 0.15rem rgba(0,0,0,0.3));
+        }
+
+        .expanded-card.open .image-frame::after {
+    display: none;
+}
+        .image-frame:hover::after { transform: translateY(-0.25rem) rotate(45deg); }
+        .expanded-card.open .image-frame:hover::after { transform: translateY(-0.25rem) rotate(-135deg); }
+
+        @media (max-width: 992px) {
+            .showcase-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; flex-direction: column; gap: 10px; text-align: center; }
+            .nav-meta { text-align: center; }
+            .hero-banner { margin: 40px auto 20px auto; }
+            .hero-banner h1 { font-size: 2.3rem; }
+            .page-navigation { flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; display: flex; }
+            .nav-link { width: 100%; box-sizing: border-box; padding: 14px 20px; }
+            .showcase-container { grid-template-columns: 1fr; gap: 20px; }
+            .card-details { padding: 25px; }
+            .expanded-card .image-frame { height: 220px; }
+            .expanded-card .card-details { padding: 20px; }
+            .expanded-card .product-title { font-size: 1.6rem; }
+        }
+
+@keyframes raffleBounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-6px) scale(1.04);
+    }
+    50% {
+        transform: translateY(0) scale(1);
+    }
+    75% {
+        transform: translateY(-3px) scale(1.02);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.nav-link.attention {
+    animation: raffleBounce 0.8s ease;
+}
+    </style>
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <canvas id="petalsCanvas"></canvas>
+    <nav class="navbar">
+        <a class="nav-brand" href="index.html">Studio Mochi</a>
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+    </nav>
+
+    <div class="hero-banner">
+        <h1>Market Day Menu</h1>
+        <p>Freshly baked treats & kawaii accessories ✨ <br>Preorder over $5 to enter the raffle to win your order <strong style="color:#C56E7B;">FREE</strong>!<span style="color: #ef4444; font-weight: bold; font-size: 16px; margin-left: 1px;">*</span></p>
+        
+        <p class="countdown" id="countdown">Loading countdown...</p>
+        
+        <div class="page-navigation">
+            <a href="#" id="menuItemsBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="nav-link">Menu Items</a>
+            <a href="preorderForm.html" class="nav-link">Preorder Form</a>
+            <a href="preorderRaffle.html" class="nav-link">PREORDER RAFFLE</a>
+        </div>
+    </div>
+
+    <div class="showcase-container">
+        <div class="product-card pink-theme">
+            <div class="image-frame">
+                <img src="tomochiCookies.png" alt="Tomochi Cookies">
+            </div>
+            <div class="card-details">
+                <div class="meta-header">
+                    <div>
+                        <span class="category-tag">Sweet Treat</span>
+                        <h2 class="product-title">Tomochi Cookies</h2>
+                    </div>
+                    <div class="product-price">$2.50</div>
+                </div>
+                <p class="product-description">Crunchy, cute cookies featuring a cloudlike mochi centre.</p>
+            </div>
+        </div>
+
+        <div class="product-card green-theme">
+            <div class="image-frame">
+                <img src="sootSpriteBrookies.jpg" alt="Spritey Mochi Brookies">
+            </div>
+            <div class="card-details">
+                <div class="meta-header">
+                    <div>
+                        <span class="category-tag">Sweet Treat</span>
+                        <h2 class="product-title">Spritey Mochi Brookies</h2>
+                    </div>
+                    <div class="product-price">$3.00</div>
+                </div>
+                <p class="product-description">Our famously irresistable brownie x cookie combo, now stuffed with soft and gooey mochi.</p>
+            </div>
+        </div>
+
+        <div class="product-card purple-theme">
+            <div class="image-frame">
+                <img src="https://copilot.microsoft.com/th/id/BCO.ceb392f3-4a2b-4455-9e99-c3044ab59522.png" alt="Jiji's Midnight Tiramisu">
+            </div>
+            <div class="card-details">
+                <div class="meta-header">
+                    <div>
+                        <span class="category-tag">Sweet Treat</span>
+                        <h2 class="product-title">Jiji's Midnight Tiramisu</h2>
+                    </div>
+                    <div class="product-price">$3.00</div>
+                </div>
+                <p class="product-description">Perfect layers of espresso and sweet cream...all topped with the adorable Jiji cat.</p>
+            </div>
+        </div>
+
+        <div class="product-card yellow-theme">
+            <div class="image-frame">
+                <img src="spirtedMochi.jpg" alt="Deliciously chewy mochi decorated like the iconic spirited away characters. Mango, Oreo or Matcha and Strawberry flavoured mochi.">
+            </div>
+            <div class="card-details">
+                <div class="meta-header">
+                    <div>
+                        <span class="category-tag">Signature Treat</span>
+                        <h2 class="product-title">Spirited<br>Mochi</h2>
+                    </div>
+                    <div class="product-price">$2.00</div>
+                </div>
+                <p class="product-description">Almost too cute to eat. A pack of 3 satisfyingly chewy mochis with a cloud-soft, fruity interior.</p>
+            </div>
+        </div>
+
+        <div class="product-card pink-theme">
+            <div class="image-frame">
+                <img src="keychain.jpg" alt="Keychain">
+            </div>
+            <div class="card-details">
+                <div class="meta-header">
+                    <div>
+                        <span class="category-tag">Preorder Only</span>
+                        <h2 class="product-title">Customisable Keychain</h2>
+                    </div>
+                    <div class="product-price">$3.00</div>
+                </div>
+                <p class="product-description">Cute handmade keychain for bags, keys, or gifts.</p>
+            </div>
+        </div>
+
+        <div class="product-card green-theme">
+            <div class="image-frame">
+                <img src="bee.jpg" alt="Bracelet">
+            </div>
+            <div class="card-details">
+                <div class="meta-header">
+                    <div>
+                        <span class="category-tag">Preorder Only</span>
+                        <h2 class="product-title">Customisable Bracelet</h2>
+                    </div>
+                    <div class="product-price">$3.00</div>
+                </div>
+                <p class="product-description">Premium bracelets in your choice of colours and charms.</p>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align:center; color:var(--text-muted); font-size:0.8rem; margin:20px auto 50px auto; padding: 0 20px; max-width: 600px;">
+        <span style="color:#ef4444; font-weight:bold;">*</span> Golden Ticket raffle prize is limited to a maximum of $10. See Preorder Raffle for more details.
+    </p>
+
+<script>
+function highlightActivePageLinks() {
+    const currentPath = window.location.pathname.split("/").pop();
+    const activePage = currentPath === "" ? "index.html" : currentPath;
+    const allLinks = document.querySelectorAll(".nav-link");
+    
+    allLinks.forEach(link => {
+        const linkPath = link.getAttribute("href").split("/").pop();
+        if (linkPath === activePage || (link.id === "menuItemsBtn" && (activePage === "index.html" || activePage === ""))) {
+            link.classList.add("active-link");
+        } else {
+            link.classList.remove("active-link");
+        }
+    });
+}
+highlightActivePageLinks();
+
+const countdownEl = document.getElementById("countdown");
+const marketDate = new Date("2026-09-01T12:55:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = marketDate - now;
+    if (distance < 0) { countdownEl.innerHTML = "🎉 Market Day is OPEN!"; return; }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    countdownEl.innerHTML = ` Only ${days}d ${hours}h ${minutes}m ${seconds}s left!`;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+const toggle = document.getElementById("themeToggle");
+toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+});
+
+const canvas = document.getElementById("petalsCanvas");
+const ctx = canvas.getContext("2d");
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize();
+window.addEventListener("resize", resize);
+ 
+const PETAL_COUNT = window.innerWidth < 768 ? 8 : 18;
+const petals = [];
+for (let i = 0; i < PETAL_COUNT; i++) {
+    petals.push({
+        x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight * 0.8,
+        r: Math.random() * 7 + 8, speed: Math.random() * 0.6 + 0.3,
+        sway: Math.random() * 2, baseX: Math.random() * window.innerWidth
+    });
+}
+let fade = 1;
+let targetFade = 1;
+
+window.addEventListener("scroll", () => {
+    targetFade = Math.max(0, 1 - window.scrollY / 75);
+});
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    fade += (targetFade - fade) * 0.08;
+    for (let p of petals) {
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(Math.sin(p.sway + p.y * 0.01));
+        ctx.beginPath(); ctx.fillStyle = `rgba(255, 182, 193, ${0.35 * fade})`;
+        ctx.moveTo(0, 0); ctx.quadraticCurveTo(p.r, p.r, 0, p.r * 2); ctx.quadraticCurveTo(-p.r, p.r, 0, 0);
+        ctx.fill(); ctx.restore();
+        p.y += p.speed; p.x = p.baseX + Math.sin(p.sway + p.y * 0.015) * 18;
+        if (p.y > canvas.height) { p.y = -10; p.baseX = Math.random() * window.innerWidth; }
+    }
+    requestAnimationFrame(draw);
+}
+draw();
+
+const overlay = document.createElement("div");
+overlay.className = "card-overlay";
+document.body.appendChild(overlay);
+let activeCard = null;
+
+function openCard(card) {
+    if (activeCard) return;
+    const rect = card.getBoundingClientRect();
+    const clone = card.cloneNode(true);
+    const title = clone.querySelector(".product-title");
+    const desc = clone.querySelector(".product-description");
+    const overrides = [
+        { title: "Tomochi Cookies", desc: `Crunchy, cute cookies featuring a cloudlike mochi centre. <p><strong>Contains:</strong> Wheat (Gluten), Dairy (Milk, Butter), Egg, and Soy. <p><strong>May Contain:</strong> Peanuts and Tree Nuts.</p></p>
+           <div style="display: flex; justify-content: center; width: 100%; margin-top: 25px;">
+           <svg width="120" height="120" viewBox="0 0 100 100">
+           <path d="M15 46 H5 M15 50 H3 M15 54 H6 M85 46 H95 M85 50 H97 M85 54 H94" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+           <path d="M33 30 Q28 10 37 15 Q43 22 41 30 Z" fill="#7d878a" stroke="#444" stroke-width="1.5"/>
+           <path d="M67 30 Q72 10 63 15 Q57 22 59 30 Z" fill="#7d878a" stroke="#444" stroke-width="1.5"/>
+           <path d="M50 25 C25 25 18 45 18 65 C18 88 32 94 50 94 C68 94 82 88 82 65 C82 45 75 25 50 25 Z" fill="#7d878a" stroke="#444" stroke-width="1.5"/>
+           <ellipse cx="50" cy="67" rx="24" ry="21" fill="#fcfbe3" stroke="#444" stroke-width="1"/>
+           <path d="M42 55 Q50 51 58 55 Q50 58 42 55 M34 64 Q40 60 46 64 Q40 67 34 64 M54 64 Q60 60 66 64 Q60 67 54 64" fill="#7d878a"/>
+           <path d="M38 73 Q43 70 48 73 Q43 76 38 73 M52 73 Q57 70 62 73 Q57 76 52 73" fill="#7d878a"/>
+           <circle cx="34" cy="40" r="5.5" fill="#fff" stroke="#444" stroke-width="1"/>
+           <circle cx="34" cy="40" r="2" fill="#000"/>
+           <circle cx="66" cy="40" r="5.5" fill="#fff" stroke="#444" stroke-width="1"/>
+           <circle cx="66" cy="40" r="2" fill="#000"/>
+           <polygon points="47,42 53,42 50,45" fill="#444"/>
+         </svg>
+         </div>` },
+        { title: "Spritey Mochi Brookies", desc: `Our famously irresistable brownie x cookie combo, now stuffed with soft and gooey mochi. <p><strong>Contains</strong>: Wheat (Gluten), Dairy (Milk, Butter), Egg, and Soy. <p><strong>May Contain</strong>: Peanuts and Tree Nuts.</p></p>` },
+        { title: "Jiji's Midnight Tiramisu", desc: `Perfect layers of espresso and sweet cream...all topped with the adorable Jiji cat. <p><strong>Contains:</strong> Dairy (Milk, Mascarpone, Cream), Wheat (Gluten), and Egg. <p><strong>May Contain: </strong>Soy and Tree Nuts.</p></p> <p><strong style="font-size:1.25rem; color:var(--purple-text);">Preorder Special - Choose Your Shape!</strong><br>😸 Jiji<br>🍃 Totoro<br>🔥 Calcifer</p>` },
+        { title: "Spirited Mochi", desc: `<strong>Contains:</strong> Dairy (Milk, Butter, Cream). <p><strong>May Contain:</strong> Wheat (Gluten) and Soy.</p><strong style="font-size:1.15rem; color:var(--yellow-text);">Preorder Special</strong><br>Choose either the 3 pack customisable or 3 pack (one of each flavour) options for ONLY $5.00!<p><strong style="font-size:1.15rem; color:var(--yellow-text);">Flavours</strong><br>🥭 Mango<br>
+    🍓 Strawberry Matcha<br>
+    🍪 Oreo</p>` },
+        { title: "Customisable Keychain", desc: `Cute handmade keychains for bags, keys, or gifts. Comes with a phone charm strap or an original keyring top. <p><strong style="font-size:1.25rem; color:var(--pink-text);">Charms</strong><br>🥤 Soda<br>😸 Animal</p>` },
+        { title: "Customisable Bracelet", desc: `Premium bracelets in your choice of colours and charms. <p><strong style="font-size:1.25rem; color:var(--green-text);">Charms</strong><br>✨ Star<br>🌙 Moon<br>💖 Heart</p><p><strong style="font-size:1.25rem; color:var(--green-text);">Studio Mochi x Custom Cravings</strong><br>A special deal, just for you. Get a customisable bracelet and a pipe cleaner flower for only $4!` }
+    ];
+    const cards = Array.from(document.querySelectorAll(".product-card"));
+    const index = cards.indexOf(card);
+    if (overrides[index]) { title.textContent = overrides[index].title; desc.innerHTML = overrides[index].desc; }
+
+    clone.classList.add("expanded-card");
+    clone.style.top = rect.top + "px"; clone.style.left = rect.left + "px";
+    clone.style.width = rect.width + "px"; clone.style.height = rect.height + "px";
+    document.body.appendChild(clone);
+
+    const close = document.createElement("div"); close.className = "close-btn"; close.innerHTML = "✕"; clone.appendChild(close);
+    overlay.classList.add("active");
+    requestAnimationFrame(() => { clone.classList.add("open"); });
+
+    function closeCard() {
+        clone.classList.remove("open"); overlay.classList.remove("active");
+        setTimeout(() => { clone.remove(); activeCard = null; }, 300);
+    }
+    close.onclick = (e) => { e.stopPropagation(); closeCard(); };
+    overlay.onclick = closeCard; activeCard = clone;
+}
+document.querySelectorAll(".product-card").forEach(card => { card.addEventListener("click", () => openCard(card)); });
+    
+window.addEventListener("load", () => {
+    const raffleBtn = document.querySelector('a[href="preorderRaffle.html"]');
+
+    setTimeout(() => {
+        raffleBtn.classList.add("attention");
+    }, 700);
+});
+</script>
+</body>
+</html>

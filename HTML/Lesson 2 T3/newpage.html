@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test {
+            color:rgb(255, 139, 178);
+            background-color: rgb(255, 220, 235);
+            width: 70px;
+            text-align: center;
+            border-style: solid;
+            border-radius: 9px;
+            padding: 5px;
+            margin-bottom: 15px;
+            border-width: 2px;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-size: 90%;
+        }
+
+        #green {
+            color: rgb(152, 97, 219);
+        }
+
+        .flexcontainer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .test {
+                color:rgb(165, 88, 114); 
+            }
+        }
+
+        </style>
+</head>
+<body>
+    <div class="flexcontainer">
+        <span class="test">Button 1</span>
+        <span>
+            <span class="miniButton">Button 2a</span>
+            <span class="miniButton">Button 2b</span>
+            <span class="miniButton">Button 2c</span>
+        </span>
+        <span class="test">Button 3</span>
+    </div>
+    <div>This is a <span id="green">test</span> paragraph.</div>
+    
+</body>
+</html>
